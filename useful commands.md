@@ -296,3 +296,37 @@ GET contacts/_search
   }
 }
 ```
+
+When speific fields are required use `_source` in the query
+```
+GET contacts/_search
+{
+  "from": 0,
+  "size": 100,
+  "query": { 
+    "bool": { 
+      "must": [
+        {
+          "multi_match" : {
+            "query": "trekker",
+            "fields": ["firstName^5", "lastName^5", "*"]
+        }
+        }
+      ],
+      "filter": [ 
+        { "term":  
+        { 
+          "field_1" : "16d4-test-value" 
+        }
+        }
+        ]
+    }
+  },
+   "_source": [
+        "firstName",
+        "lastName",
+        "contactID"
+    ]
+}
+
+```
