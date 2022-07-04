@@ -179,6 +179,14 @@ On index deletion, the documents also will be delete. To delete the index.
 DELETE contacts_index
 ```
 
+### Insert Record
+```
+POST /index_name/_doc/_id
+{
+  "test" : "data"
+}
+```
+
 ### Analyze Index
 Based on our index creation, we can test how the input will be index.
 - How ngram index will index the below text
